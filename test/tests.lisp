@@ -1,13 +1,16 @@
 (ql:quickload "fiveam")
 (in-package :fiveam)
-(def-suite* tictactoe-status)
+(def-suite* word-ladder)
 
 (load "./src/word-ladder.lisp")
 
+(defparameter *wg* (word-graph '(bag bog cat cog cot dog dot fat fog)))
+
 (test word-graph-can-find-adjacent-words
-      (let ((wg (word-graph '(bag bog cat cog cot dog dot fat fog))))
-        (is (eql '(cog bog fog)
-                 (adjacent-words 'dog wg)))))
+      (is (equalp '(bog cog fog)
+                 (adjacent-words 'dog *wg*)))
+      (is (equalp nil
+                 (adjacent-words 'zoo *wg*))))
 
 
 (run!)
