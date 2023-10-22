@@ -13,4 +13,9 @@
                  (adjacent-words 'zoo *wg*))))
 
 
+(test strings-are-adjacent-if-different-by-1-letter
+      (is (adjacentp "bog" "cog"))
+      (is (equalp nil (adjacentp "bog" "bog")))
+      )
+
 (run!)
