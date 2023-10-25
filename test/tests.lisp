@@ -4,13 +4,13 @@
 
 (load "./src/word-ladder.lisp")
 
-(defparameter *wg* (word-graph '(bag bog cat cog cot dog dot fat fog)))
+(defparameter *wg* (dictionary '("bag" "bog" "cat" "cog" "cot" "dog" "dot" "fat" "fog")))
 
-(test word-graph-can-find-adjacent-words
-      (is (equalp '(bog cog fog)
-                 (adjacent-words 'dog *wg*)))
+(test dictionary-can-find-adjacent-words
+      (is (equalp '("bog" "cog" "dot" "fog")
+                 (adjacent-words "dog" *wg*)))
       (is (equalp nil
-                 (adjacent-words 'zoo *wg*))))
+                 (adjacent-words "zoo" *wg*))))
 
 
 (test strings-are-adjacent-if-different-by-1-letter

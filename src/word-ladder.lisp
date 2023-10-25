@@ -9,13 +9,11 @@
         (= diff-count 1))
       nil))
 
-(defun word-graph (words)
-  (let ((wg (make-hash-table)))
-    (progn (setf (gethash 'dog wg) 
-                 (sort '(cog bog fog) #'string<= ))
-           wg)))
+(defun dictionary (words)
+  words)
 
 (defun adjacent-words (word graph)
-  (nth-value 0 (gethash word graph)))
+  (sort (remove-if-not (lambda (w) (adjacentp w word)) graph) #'string<= ))
+
 
 
